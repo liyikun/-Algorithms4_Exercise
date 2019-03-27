@@ -16,7 +16,7 @@ public class Basic1_1_22 {
         int mid = (lo + hi) / 2;
         if (key < a[mid]) return rank(key, a, lo, mid - 1);
         else if (key > a[mid]) return rank(key, a, mid + 1, hi);
-        else return a[mid];
+        else return mid;
     }
 
     public static void main(String[] args) {
