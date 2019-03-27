@@ -202,6 +202,32 @@
               <item name="Algo4" type="b2602c69:ProjectViewProjectNode" />
               <item name="Algo4" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Algo4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Algo4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Algo4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Algo4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Algo4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Algo4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Algo4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Algo4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Basic" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -222,11 +248,11 @@
     <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Basic" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\liyik\MyCodes\Algo4\src\test\resources" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Basic" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -386,16 +412,15 @@
       <workItem from="1553006978594" duration="10722000" />
       <workItem from="1553317987637" duration="6240000" />
       <workItem from="1553436295215" duration="1415000" />
-      <workItem from="1553614860343" duration="1788000" />
+      <workItem from="1553614860343" duration="1832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59354000" />
+    <option name="totallyTimeSpent" value="59398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
