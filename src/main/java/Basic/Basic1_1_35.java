@@ -1,47 +1,58 @@
 package Basic;
 
-
-import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
 public class Basic1_1_35 {
+    private static int SIDES = 6;
+    public static double[] getProbability()
+    {
+        double[] dist = new double[2*SIDES+1];
 
-    private static void Draw (int N, double p) {
+        for (int i = 1; i <= SIDES; i++)
+            for (int j = 1; j <= SIDES; j++)
+                dist[i+j] += 1.0;
 
-        StdDraw.setXscale(0, 300);
-        StdDraw.setYscale(0, 300);
-        StdDraw.setPenRadius(0.01);
-        StdDraw.circle(150,150,100);
+        for (int k = 2; k <= 2*SIDES; k++)
+            dist[k] /= SIDES*SIDES;
 
-        StdDraw.setPenRadius(0.05);
-        double theta = (double)2 * Math.PI / N;
+        return dist;
+    }
 
-        double[][] points = new double[N][N];
-
-        for(int i = 0;i < N;i++) {
-            double start = theta * i;
-            System.out.println(Math.cos(start));
-            System.out.println(Math.sin(start));
-            double x = Math.cos(start) * 100 + 150;
-            double y = Math.sin(start) * 100 + 150;
-            points[i][0] = x;
-            points[i][1] = y;
-            StdDraw.point(x,y);
+    public static double[] getExperiment(int n)
+    {
+        double[] probability = getProbability();
+        double[] dist = new double[2*SIDES+1];
+        for(int i = 0; i < n; i ++) {
+            int value = StdRandom.discrete(probability);
+            dist[value]++;
         }
 
-        StdDraw.setPenRadius(0.01);
+        for (int k = 2; k <= 2*SIDES; k++)
+            dist[k] /= n;
 
-        for(int i = 0;i < N; i++) {
-            for(int y = i + 1;y < N; y++) {
-                if(StdRandom.bernoulli(p)) {
-                    StdDraw.line(points[i][0], points[i][1], points[y][0], points[y][1]);
-                }
-            }
-        }
+        return dist;
     }
 
     public static void main(String[] args) {
-        Draw(10,.1);
+        int n = Integer.parseInt(args[0]);
+
+        double[] probability = getProbability();
+
+        for (int i = 2; i <= 2*SIDES; i++)
+            StdOut.printf("%7d", i);
+        StdOut.println();
+
+        for (int i = 2; i <= 2*SIDES; i++)
+            StdOut.printf("%7.3f", probability[i]);
+        StdOut.println();
+
+        double[] experim = getExperiment(n);
+
+        for (int i = 2; i <= 2*SIDES; i++)
+            StdOut.printf("%7.3f", experim[i]);
+        StdOut.println();
+
     }
 
 }
