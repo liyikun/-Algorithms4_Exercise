@@ -5,7 +5,7 @@ import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.stream.IntStream;
 
-public class Basic1_1_36 {
+public class Basic1_1_36{
 
     public static int[][] ShuffleTest(int M,int N) {
         int[] initprobability = IntStream.range(0, M).toArray();
