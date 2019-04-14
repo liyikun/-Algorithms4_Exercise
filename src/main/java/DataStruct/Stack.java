@@ -31,6 +31,9 @@ public class Stack<Item> implements Iterable<Item> {
         N--;
         return item;
     }
+    public Item peek() {
+        return first.item;
+    }
 
     @Override
     public Iterator<Item> iterator() {
@@ -57,17 +60,41 @@ public class Stack<Item> implements Iterable<Item> {
         }
     }
 
+    public static <Item> Stack<Item> copy(Stack<Item> s) {
+        Iterator<Item> it = s.iterator();
+        Stack<Item> result = new Stack<Item>();
+        Stack<Item> temp = new Stack<Item>();
+        while (it.hasNext()) {
+            temp.push(it.next());
+        }
+        it = temp.iterator();
+        while (it.hasNext()){
+            result.push(it.next());
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        Stack <String> coll = new Stack<String>();
-        while (!StdIn.isEmpty()) {
-            String item = StdIn.readString();
-            coll.push(item);
-        }
+//        Stack <String> coll = new Stack<String>();
+//        while (!StdIn.isEmpty()) {
+//            String item = StdIn.readString();
+//            coll.push(item);
+//        }
+//
+//        for(String s: coll) {
+//            StdOut.println(s);
+//        }
+//
+//        StdOut.println("(" + coll.Size() + "left on stack)");
 
-        for(String s: coll) {
-            StdOut.println(s);
-        }
+        Stack<String> s1 = new Stack<String>();
+        s1.push("first");
+        s1.push("second");
+        s1.push("third");
 
-        StdOut.println("(" + coll.Size() + "left on stack)");
+        Stack<String> s2 = Stack.copy(s1);
+        while (!s2.isEmpty()) {
+            System.out.println(s2.pop());
+        }
     }
 }
