@@ -7,13 +7,14 @@ import edu.princeton.cs.algs4.StdOut;
 class Selection {
     public static void sort(Comparable[] a) {
         for(int i = 0;i<a.length;i++) {
-            Comparable min = a[i];
+            //Comparable min = a[i];
+            int min = i;
             for(int j = i + 1;j < a.length;j++) {
-                if(less(a[j],min)) {
-                    min = a[j];
-                    exch(a,i,j);
+                if(less(a[j],a[min])) {
+                    min = j;
                 }
             }
+            exch(a,i,min);
         }
     }
     private static boolean less(Comparable v,Comparable w) {

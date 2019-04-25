@@ -5,20 +5,6 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
 
-class Person {
-    String name;
-    int hitCount;
-    int allCount;
-    float hitRate;
-
-    public Person(String name, int hitCount, int allCount, float hitRate) {
-        this.name = name;
-        this.hitCount = hitCount;
-        this.allCount = allCount;
-        this.hitRate = hitRate;
-    }
-}
-
 public class Basic1_1_21 {
 
     private static void readInput() {
@@ -42,7 +28,8 @@ public class Basic1_1_21 {
 
                 float hitRate = (float)hitCount/allCount;
 
-                persons.add(new Person(name,hitCount,allCount,hitRate));
+                Person p = new Person(name,hitCount,allCount,hitRate);
+                persons.add(p);
                 StdOut.println("input name");
 
             } catch (Exception e){
@@ -60,3 +47,15 @@ public class Basic1_1_21 {
 }
 
 
+class Person {
+    String name;
+    int hitCount;
+    int allCount;
+    float hitRate;
+    public Person(String name, int hitCount, int allCount, float hitRate) {
+        this.name = name;
+        this.hitCount = hitCount;
+        this.allCount = allCount;
+        this.hitRate = hitRate;
+    }
+}
