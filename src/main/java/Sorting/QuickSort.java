@@ -4,37 +4,33 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
-public class DownTopMerge {
-    private static Comparable[] aux;
+public class QuickSort {
 
-    public static void sort(Comparable a[]) {
-        int N = a.length;
-        aux = new Comparable[N];
-
-        for (int sz = 1; sz < N; sz = sz + sz) {
-            for (int lo = 0; lo < N - sz; lo += sz+sz) {
-                merge(a, lo, lo + sz - 1, Math.min(lo + 2 * sz - 1, N - 1));
-            }
-        }
+    public static void sort(Comparable[] a) {
+        StdRandom.shuffle(a);
+        sort(a,0,a.length - 1);
     }
 
-    public static void merge(Comparable a[], int lo, int mid, int hi) {
-
-        int i = lo;
-        int j = mid + 1;
-
-        for (int k = lo; k <= hi; k++) {
-            aux[k] = a[k];
-        }
-
-        for (int k = lo; k <= hi; k++) {
-            if (i > mid) a[k] = aux[j++];
-            else if (j > hi) a[k] = aux[i++];
-            else if (less(aux[i], aux[j])) a[k] = aux[i++];
-            else a[k] = aux[j++];
-        }
+    private static void sort(Comparable[] a, int lo, int hi) {
+        if(hi <= lo) return;
+        int j = parition(a,lo,hi);
+        sort(a,lo,j-1);
+        sort(a,j+1,hi);
     }
 
+    private static int parition(Comparable[] a, int lo, int hi) {
+        int i = lo,j = hi + 1;
+        Comparable v = a[lo];
+
+        while (true) {
+            while (less(a[++i],v)) if(i == hi) break;
+            while (less(v,a[--j])) if(j == lo) break;
+            if(i >= j) break;
+            exch(a,i,j);
+        }
+        exch(a,lo,j);
+        return j;
+    }
 
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -71,4 +67,3 @@ public class DownTopMerge {
     }
 
 }
-
