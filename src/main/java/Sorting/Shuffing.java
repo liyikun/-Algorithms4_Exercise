@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.StdRandom;
 
 public class Shuffing {
     public static void Shuffle(String[] a) {
-        for(int i = 0;i<a.length;i++) {
+        for(int i = 0  ;i<a.length;i++) {
             int j = StdRandom.uniform(i + 1);
             exch(a,i,j);
         }
