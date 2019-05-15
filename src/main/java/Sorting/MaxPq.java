@@ -13,7 +13,6 @@ public class MaxPq<Key extends Comparable<Key>> {
             k = k / 2;
         }
     }
-
     private void sink(int k) {
         while (k * 2 <= N) {
             int j = k * 2;
