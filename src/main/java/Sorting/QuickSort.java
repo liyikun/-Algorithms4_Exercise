@@ -29,6 +29,7 @@ public class QuickSort {
             exch(a,i,j);
         }
         exch(a,lo,j);
+        System.out.println(j);
         return j;
     }
 
@@ -61,6 +62,8 @@ public class QuickSort {
         for(int i =0;i<a.length;i++) {
             b[i] = a[i];
         }
+        sort(b);
+        show(b);
         sort(b);
         assert sorted(b);
         show(b);

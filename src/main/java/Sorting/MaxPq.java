@@ -76,9 +76,9 @@ public class MaxPq<Key extends Comparable<Key>> {
         }
 
         Stack<Transaction> stack= new Stack<Transaction>();
-        StdOut.println(pq.max());
-        while (!pq.isEmpty()) stack.push(pq.delMax());
-        for (Transaction t: stack) StdOut.println(t);
+        while (!pq.isEmpty()) {
+            StdOut.println(pq.delMax());
+        }
     }
 
 }
