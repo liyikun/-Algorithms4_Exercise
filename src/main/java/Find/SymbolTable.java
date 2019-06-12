@@ -3,17 +3,13 @@ package Find;
 import DataStruct.Queue;
 import edu.princeton.cs.algs4.StdIn;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SymbolTable<Key, Value>  {
-    public void put(Key key,Value val) {
 
-    }
+public class SymbolTable<Key extends Comparable<Key>, Value> {
 
-    public Value get(Key key) {
-        return null;
-    }
-
+    private Node first;
     public void delete(Key key) {
 
     }
@@ -23,29 +19,50 @@ public class SymbolTable<Key, Value>  {
     }
 
     public boolean isEmpty() {
-        return true;
+        return first == null;
     }
 
     public int size() {
         return 1;
     }
 
-    public Iterator<Key> keys() {
-        return  new KeysIterator();
+    public Iterable<Key> keys() {
+
+        return new ArrayList<Key>();
     }
-    class KeysIterator implements Iterator<Key>{
 
-        @Override
-        public Key next() {
 
-            return null;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return true;
+    private class Node {
+        Key key;
+        Value value;
+        Node next;
+        public Node(Key key, Value value, Node next) {
+            this.key = key;
+            this.value = value;
+            this.next = next;
         }
     }
+
+    public Value get(Key key) {
+        for(Node x = first; x!=null; x=x.next) {
+            if(x.key.compareTo(key) == 0) {
+                return x.value;
+            }
+        }
+        return null;
+    }
+
+    public void put(Key key,Value value) {
+        for(Node x = first; x!= null; x=x.next) {
+            if(x.key.compareTo(key) == 0) {
+                x.value = value;
+                return;
+            }
+        }
+        Node newnode = new Node(key,value,first);
+        first = newnode;
+    }
+
 
     public static void main(String[] args) {
         int minlen = Integer.parseInt(args[0]);
