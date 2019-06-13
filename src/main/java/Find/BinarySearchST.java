@@ -20,6 +20,10 @@ public class BinarySearchST <Key extends Comparable<Key>,Value>{
         values = (Value[]) new Object[capacity];
     }
 
+    public int size() {
+        return N;
+    }
+
     public void put(Key key,Value value) {
         int i = rank(key);
         if(i < N && keys[i].compareTo(key) == 0) {
@@ -43,16 +47,15 @@ public class BinarySearchST <Key extends Comparable<Key>,Value>{
     }
 
     private int rank(Key key) {
-        return rank(key,0,N-1);
-    }
-
-    private int rank(Key key,int lo,int hi) {
-        if(lo >= hi) return lo;
-        int mid = lo + (hi - lo) / 2;
-        int cmp = key.compareTo(keys[mid]);
-        if(cmp < 0) return rank(key,lo,mid-1);
-        else if(cmp > 0) return rank(key,mid + 1,hi);
-        else return mid;
+        int lo = 0,hi = N - 1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            int cmp = key.compareTo(keys[mid]);
+            if(cmp < 0) hi = mid - 1;
+            else if(cmp > 0) lo = mid + 1;
+            else return mid;
+        }
+        return lo;
     }
 
     public Key max() {
@@ -65,6 +68,7 @@ public class BinarySearchST <Key extends Comparable<Key>,Value>{
 
     public boolean contains(Key key) {
         int i = rank(key);
+        if(i >= N) return false;
         return keys[i].compareTo(key) == 0;
     }
 
@@ -93,12 +97,12 @@ public class BinarySearchST <Key extends Comparable<Key>,Value>{
     public static void main(String[] args) {
         int minlen = Integer.parseInt(args[0]);
 
-        BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>(minlen);
+        BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>(1000);
 
-        In in = new In(args[0]);
+        In in = new In(args[1]);
         while(!in.isEmpty()) {
             String word = in.readString();
-            if(word.length() < minlen) continue;
+            if(word.length() < 1) continue;
             if(!st.contains(word)) st.put(word,1);
             else st.put(word,st.get(word) + 1);
         }

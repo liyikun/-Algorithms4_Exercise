@@ -1,7 +1,9 @@
 package Find;
 
 import DataStruct.Queue;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -69,8 +71,10 @@ public class SymbolTable<Key extends Comparable<Key>, Value> {
 
         SymbolTable<String, Integer> st = new SymbolTable<String, Integer>();
 
-        while(!StdIn.isEmpty()) {
-            String word = StdIn.readString();
+        In in = new In(args[1]);
+
+        while(!in.isEmpty()) {
+            String word = in.readString();
             if(word.length() < minlen) continue;
             if(!st.contains(word)) st.put(word,1);
             else st.put(word,st.get(word) + 1);
@@ -81,7 +85,7 @@ public class SymbolTable<Key extends Comparable<Key>, Value> {
         st.put(max,0);
 
         for(String word: st.keys()) {
-
+            StdOut.println(word);
         }
     }
 }
