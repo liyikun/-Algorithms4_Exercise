@@ -1,6 +1,9 @@
 package Find;
 
 
+import DataStruct.Queue;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
 
 public class RedBlackTree<Key extends Comparable<Key>,Value> {
 
@@ -123,5 +126,37 @@ public class RedBlackTree<Key extends Comparable<Key>,Value> {
         return root == null;
     }
 
+    public Iterable<Key> keys() {
+        return keys(min(),max());
+    }
+
+    public Iterable<Key> keys(Key lo,Key hi) {
+
+        Queue<Key> queue = new Queue<Key>();
+        keys(root,queue,lo,hi);
+        return queue;
+    }
+
+    public void keys(Node x,Queue quese,Key lo,Key hi) {
+        if(x == null) return;
+        int complo = lo.compareTo(x.key);
+        int comphi = hi.compareTo(x.key);
+        if(complo < 0)keys(x.left,quese,lo,hi);
+        if(complo <= 0 && comphi >=0 ) quese.enQueues(x.key);
+        if(comphi > 0) keys(x.right,quese,lo,hi);
+    }
+
+
+    public static void main(String[] args) {
+        RedBlackTree<String, Integer> st = new RedBlackTree<String, Integer>();
+
+        In in = new In(args[0]);
+        for (int i = 0; !in.isEmpty(); i++) {
+            String key = in.readString();
+            st.put(key, i);
+        }
+        for (String s : st.keys())
+            StdOut.println(s + " " + st.get(s));
+    }
 
 }
