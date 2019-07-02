@@ -142,6 +142,21 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 
+    public Key findRank(int r) {
+        return findRank(r,root);
+    }
+
+    private Key findRank(int r,Node x) {
+        if(x == null) return null;
+        if(r < size(x.left)) {
+            return findRank(r,x.left);
+        } else if(r > size(x.left)) {
+            return findRank(r - 1 - size(x.left) ,x.right);
+        } else {
+            return x.key;
+        }
+    }
+
     public static void main(String[] args) {
         BST<String, Integer> st = new BST<String, Integer>();
 
@@ -152,6 +167,8 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
         for (String s : st.keys())
             StdOut.println(s + " " + st.get(s));
+
+        System.out.println(st.findRank(1));
     }
 
 
