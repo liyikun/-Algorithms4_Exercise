@@ -3,7 +3,6 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.HashMap;
 
-
 public class Basic1_1_19 {
     private static HashMap<Integer, Long> result = new HashMap<>();
     private static long F (int N)
