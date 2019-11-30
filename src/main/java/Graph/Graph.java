@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.In;
 
 class Graph {
     private int V;
-<<<<<<< HEAD
+
     private int E;
     private Bag<Integer>[] adj;
 
@@ -25,26 +25,14 @@ class Graph {
             int w = in.readInt();
             addEdge(v, w);
         }
-=======
-    private Bag<Integer>[] adj; 
 
-    Graph(int V) {
-        this.V = V;
-        adj = (Bag<Integer>[]) new Bag[V];
-        for(int i = 0; i < V; i ++) {
-            adj[i] = new Bag<Integer>(); 
-        }
-    }
-    Graph(In in) {
-
->>>>>>> eb654a14da547a698eaac25f71cd1c2e73498ebf
     }
     public void addEdge(int v, int w) {
         adj[v].add(w);
         adj[w].add(v);
+        E++;
     }
     Iterable<Integer> adj(int v) {
-<<<<<<< HEAD
         return adj[v];
     }
     public int V() {
@@ -64,19 +52,6 @@ class Graph {
             s += " \n";
         }
         return s;
-=======
-        return adj[v];  
-    }
-    public int V() {
-        
-    }
-    public int E() {
-
-    }
-    @Override
-    public String toString() {
-        
->>>>>>> eb654a14da547a698eaac25f71cd1c2e73498ebf
     }
 
     public static int degree(Graph G, int v) {
@@ -112,8 +87,5 @@ class Graph {
         }
         return count;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> eb654a14da547a698eaac25f71cd1c2e73498ebf
 }

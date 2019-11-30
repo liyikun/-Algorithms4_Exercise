@@ -7,10 +7,10 @@ class CC {
 
     CC(Graph G) {
         marked = new Boolean[G.V()];
-
-        for (int v = 0; v < marked.length; v++) {
-            if (!marked[v]) {
-                dfs(G, v);
+        id = new int[G.V()];
+        for (int s = 0; s < G.V(); s++) {
+            if (!marked[s]) {
+                dfs(G, s);
                 count++;
             }
         }
@@ -25,6 +25,10 @@ class CC {
             }
         }
 
+    }
+
+    public boolean connected(int v, int w) {
+        return id[v] == id[w];
     }
 
     public int Count() {
